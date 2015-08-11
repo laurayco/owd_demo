@@ -1,0 +1,35 @@
+@media (min-width: 768px) {
+    .container {
+      max-width: 730px;
+    }
+
+    .header {
+      margin-bottom:64px;
+      padding-left:0;
+      padding-right:0;
+    }
+}
+
+body {
+  padding:20px 0;
+}
+
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+.jumbotron {
+  text-align:center;
+}
+
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
