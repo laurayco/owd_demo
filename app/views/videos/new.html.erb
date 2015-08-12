@@ -4,6 +4,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">Youtube Video</h3>
   </div>
+  <strong><%= @error.inspect %></strong>
   <div class="panel-body">
     <%= form_for :video_data, url: videos_path do |f| %>
       <div class="form-group">
