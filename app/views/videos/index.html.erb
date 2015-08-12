@@ -1,1 +1,13 @@
 <h1>INDEX</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>URL</th>
+  </tr>
+  <% @vidyas.each do |video| %>
+    <tr>
+      <td><%= video.name %></td>
+      <td><%= video.url %></td>
+    </tr>
+  <% end %>
+</table>
