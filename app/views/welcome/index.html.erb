@@ -1,7 +1,26 @@
 <div class="jumbotron">
-  <h1>Youtube With Me</h1>
+  <h1>The Most Localist Theatre</h1>
   <p class="lead">Collaboratively mash a pot of youtube videos to make magic.</p>
   <p>
-    <a class="btn btn-lg btn-success" href="/videos/new">Submit A Video!</a>
+    <a class="btn btn-lg btn-success" href="<%= videos_path action:"index" %>">Submit A Video!</a>
   </p>
 </div>
+
+<h4>Latest Videos</h4>
+
+<ul class="video_list list-unstyled list-inline">
+  <% @vidyas.each do |f| %>
+    <li class="">
+      <a href="<%= video_path(f,action:"show") %>">
+        <img
+          class="media"
+          src="http://img.youtube.com/vi/<%= f.url %>/default.jpg"
+          alt="<%= f.name %>"
+          title="<%= f.name %>"/><br/>
+        <strong><%= f.name %></strong>
+      </a>
+    </li>
+  <%end %>
+</ul>
+
+<a href="<%= videos_path %>" class="btn btn-primary">Find more videos</a>

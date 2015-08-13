@@ -8,7 +8,7 @@
 
 <div class="col-md-12 video_view_meta">
   <span>
-    <strong>Views: 0</strong>
+    <strong>Views: <%= @vidya.view_count %></strong>
   </span>
   <span>
     <%= link_to 'Edit', edit_video_path(@vidya) %>
@@ -17,3 +17,20 @@
     <%= link_to 'Delete', video_path(@vidya), method: :delete %>
   </span>
 </div>
+
+<h4>More Videos</h4>
+
+<ul class="video_list list-unstyled list-inline">
+  <% @vidyas.each do |f| %>
+    <li class="">
+      <a href="<%= video_path(f,action:"show") %>">
+        <img
+          class="media"
+          src="http://img.youtube.com/vi/<%= f.url %>/default.jpg"
+          alt="<%= f.name %>"
+          title="<%= f.name %>"/><br/>
+        <strong><%= f.name %></strong>
+      </a>
+    </li>
+  <%end %>
+</ul>

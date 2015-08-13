@@ -1,14 +1,14 @@
-<h1>All Videos</h1>
+<h3>All Videos</h3>
 <ul class="video_list list-unstyled list-inline">
-  <% @vidyas.each do |video| %>
+  <% @vidyas.each do |f| %>
     <li class="">
-      <a href="<% video_path video %>">
+      <a href="<%= video_path(f,action:"show") %>">
         <img
           class="media"
-          src="http://img.youtube.com/vi/<%= video.url %>/default.jpg"
-          alt="<%= video.name %>"
-          title="<%= video.name %>"/><br/>
-        <strong><%= video.name %></strong>
+          src="http://img.youtube.com/vi/<%= f.url %>/default.jpg"
+          alt="<%= f.name %>"
+          title="<%= f.name %>"/><br/>
+        <strong><%= f.name %></strong>
       </a>
     </li>
   <%end %>

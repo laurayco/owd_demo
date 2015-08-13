@@ -31,7 +31,9 @@ class VideosController < ApplicationController
   end
 
   def show
+    @vidyas = Video.order("view_count desc").limit(5)
     @vidya = Video.find(params[:id])
+    @vidya.update_attributes "view_count"=> (@vidya.view_count + 1)
   end
 
   def new
@@ -56,6 +58,20 @@ class VideosController < ApplicationController
     @vidya = Video.find(params[:id])
     @vidya.destroy
     redirect_to videos_path
+  end
+
+  def edit
+    @vidya = Video.find(params[:id])
+  end
+
+  def update
+    @vidya = Video.find(params[:id])
+    if not @URL then
+      redirect_to :controller=>"videos", :action => "edit", :error=>"Invalid URL", :bad_url => params[:video_data][:url]
+    else
+      @vidya.update_attributes "name"=>params[:video_data][:name],"url"=>@URL
+      redirect_to @vidya
+    end
   end
 
 end
