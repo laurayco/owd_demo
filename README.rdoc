@@ -1,4 +1,4 @@
-## README
+== README
 
 This is a simple website used by me to learn the ins and outs of Ruby on Rails.
 
