@@ -1,10 +1,15 @@
 <h1>New Video</h1>
 
+<% if not defined?(@errorzy).nil? then %>
+  <div class="alert alert-danger">
+    Sorry, but <strong><%= @bad_url %></strong> is not a valid Youtube URL.
+  </div>
+<% end %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Youtube Video</h3>
   </div>
-  <strong><%= @error.inspect %></strong>
   <div class="panel-body">
     <%= form_for :video_data, url: videos_path do |f| %>
       <div class="form-group">

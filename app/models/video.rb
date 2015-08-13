@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
   def thumbnail
-    return "THUMBNAIL"
+    return url
   end
 end
