@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ozark Web Theatre</title>
+  <title>
+    <% if not defined?(@title) then %>
+    Ozark Web Theatre
+    <% else %>
+    <%= @title %>
+    <% end %>
+  </title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,14 +30,12 @@
       </nav>
       <h3 class="text-muted">We Tube</h3>
     </div>
-    <div>
-      <%= yield %>
-    </div>
-    <footer class="footer">
+    <%= yield %>
+    <footer class="footer navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <span class="navbar-text">Ozark Web Developers, LLC 2015</span>
+      </div>
     </footer>
   </div>
-
-
-
 </body>
 </html>

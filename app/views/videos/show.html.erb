@@ -1,2 +1,19 @@
-<h1>Showing an Individual Video "<%= @vidya.name %>"</h1>
-<span><%= @vidya.thumbnail %></span>
+<h1 class="col-md-12"><%= @vidya.name %></h1>
+
+<div class="col-md-12">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe width="560" height="315" src="//www.youtube.com/embed/<%= @vidya.url %>" allowfullscreen=""></iframe>
+  </div>
+</div>
+
+<div class="col-md-12 video_view_meta">
+  <span>
+    <strong>Views: 0</strong>
+  </span>
+  <span>
+    <%= link_to 'Edit', edit_video_path(@vidya) %>
+  </span>
+  <span>
+    <%= link_to 'Delete', video_path(@vidya), method: :delete %>
+  </span>
+</div>

@@ -1,13 +1,15 @@
-<h1>INDEX</h1>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>URL</th>
-  </tr>
+<h1>All Videos</h1>
+<ul class="video_list list-unstyled list-inline">
   <% @vidyas.each do |video| %>
-    <tr>
-      <td><%= video.name %></td>
-      <td><%= video.url %></td>
-    </tr>
-  <% end %>
-</table>
+    <li class="">
+      <a href="<% video_path video %>">
+        <img
+          class="media"
+          src="http://img.youtube.com/vi/<%= video.url %>/default.jpg"
+          alt="<%= video.name %>"
+          title="<%= video.name %>"/><br/>
+        <strong><%= video.name %></strong>
+      </a>
+    </li>
+  <%end %>
+</ul>
