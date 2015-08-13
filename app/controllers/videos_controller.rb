@@ -38,16 +38,20 @@ class VideosController < ApplicationController
 
   def new
     if params.has_key?(:error)
-      @errorzy = params[:error]
-      @bad_url = params[:bad_url]
+      @errorzy = params[:error].html_safe
+      params.delete :error
     end
   end
 
   def create
     @URL = valid_url params[:video_data][:url]
+    print(@URL)
     if not @URL then
-      redirect_to :controller=>"videos", :action => "new", :error=>"Invalid URL", :bad_url => params[:video_data][:url]
+      redirect_to :controller=>"videos", :action => "new", :error=>"Sorry, but <strong>" + params[:video_data][:url] + "</strong> is not a valid Youtube URL."
     else
+      if params[:video_data][:name].length < 1 then
+        redirect_to :controller=>"videos", action=> "new", :error=>"Names cannot be empty!"
+      end
       @vidya = Video.new :name=>params[:video_data][:name], url:@URL
       @vidya.save
       redirect_to @vidya
@@ -62,15 +66,24 @@ class VideosController < ApplicationController
 
   def edit
     @vidya = Video.find(params[:id])
+    if params.has_key?(:error)
+      @errorzy = params[:error].html_safe
+      params.delete :error
+    end
   end
 
   def update
-    @vidya = Video.find(params[:id])
+    @URL = valid_url params[:video_data][:url]
     if not @URL then
-      redirect_to :controller=>"videos", :action => "edit", :error=>"Invalid URL", :bad_url => params[:video_data][:url]
+      redirect_to :controller=>"videos", :action => "edit", :error=>"Sorry, but <strong>" + params[:video_data][:url] + "</strong> is not a valid Youtube URL."
     else
-      @vidya.update_attributes "name"=>params[:video_data][:name],"url"=>@URL
-      redirect_to @vidya
+      if params[:video_data][:name].length < 1 then
+        redirect_to :controller=>"videos", :action=> "edit", :error=>"Names cannot be empty!"
+      else
+        @vidya = Video.find(params[:id])
+        @vidya.update_attributes "name"=>params[:video_data][:name],"url"=>@URL
+        redirect_to @vidya
+      end
     end
   end
 

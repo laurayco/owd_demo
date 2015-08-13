@@ -2,7 +2,7 @@
 
 <% if not defined?(@errorzy).nil? then %>
   <div class="alert alert-danger">
-    Sorry, but <strong><%= @bad_url %></strong> is not a valid Youtube URL.
+    <%= @errorzy %>
   </div>
 <% end %>
 
